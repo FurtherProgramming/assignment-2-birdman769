@@ -45,7 +45,8 @@ public class LoginController implements Initializable {
             if (loginModel.isLogin(txtUsername.getText(),txtPassword.getText())){
 
                 isConnected.setText("Logged in successfully");
-                SceneController.switchToLogin2(event);
+                SceneController.switchToMenuLandingPage(event);
+                System.out.println("sceneController Successful");
 
 
             }else{
@@ -58,8 +59,6 @@ public class LoginController implements Initializable {
 
 
 
-
-    //11.2.3 big sur
 
 
 
