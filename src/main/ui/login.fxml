@@ -4,32 +4,24 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Light.Distant?>
-<?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.LoginController">
     <children>
-            <Label fx:id="isConnected" layoutX="23.0" layoutY="173.0" text="Status">
+            <Label fx:id="isConnected" layoutX="23.0" layoutY="225.0" text="Status">
 
             </Label>
-      <TextField fx:id="txtUsername" layoutX="78.0" layoutY="55.0" AnchorPane.bottomAnchor="118.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="61.5" AnchorPane.topAnchor="55.0" />
-      <PasswordField fx:id="txtPassword" layoutX="78.0" layoutY="100.0" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="73.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="61.5" AnchorPane.topAnchor="100.0" />
-      <Button defaultButton="true" layoutX="126.0" layoutY="140.0" mnemonicParsing="false" onAction="#Login" text="Login" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="126.0" AnchorPane.rightAnchor="125.5" AnchorPane.topAnchor="140.0">
-         <effect>
-            <Lighting bumpInput="$null">
-               <light>
-                  <Light.Distant color="#d0d0d0" />
-               </light>
-            </Lighting>
-         </effect>
+      <TextField fx:id="txtUsername" layoutX="80.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="160.0" />
+      <PasswordField fx:id="txtPassword" layoutX="80.0" layoutY="80.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="160.0" AnchorPane.bottomAnchor="127.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="93.0" />
+      <Button defaultButton="true" layoutX="80.0" layoutY="120.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Login" prefHeight="35.0" prefWidth="160.0" text="Login" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="140.0">
+          <font>
+              <Font size="16.0" />
+          </font></Button>
+        <Button defaultButton="true" layoutX="80.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Login" prefHeight="35.0" prefWidth="160.0" text="Register" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="180.0">
          <font>
-            <Font size="13.0" />
+            <Font size="16.0" />
          </font></Button>
-      <Region layoutX="179.0" layoutY="-16.0" prefHeight="200.0" prefWidth="196.0" />
-
 
     </children>
 

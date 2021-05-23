@@ -25,6 +25,7 @@ public class LoginController implements Initializable {
     private TextField txtPassword;
 
 
+
     // Check database connection
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -56,6 +57,7 @@ public class LoginController implements Initializable {
             e.printStackTrace();
         }
     }
+
 
 
 
