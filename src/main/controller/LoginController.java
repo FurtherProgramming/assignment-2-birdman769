@@ -2,6 +2,7 @@ package main.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
@@ -26,6 +27,7 @@ public class LoginController implements Initializable {
     public void initialize(URL location, ResourceBundle resources){
         if (loginModel.isDbConnected()){
             isConnected.setText("Connected");
+            //change to login2
         }else{
             isConnected.setText("Not Connected");
         }
@@ -40,6 +42,7 @@ public class LoginController implements Initializable {
             if (loginModel.isLogin(txtUsername.getText(),txtPassword.getText())){
 
                 isConnected.setText("Logged in successfully");
+
             }else{
                 isConnected.setText("username and password is incorrect");
             }
