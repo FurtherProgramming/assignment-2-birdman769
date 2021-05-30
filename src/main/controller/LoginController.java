@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
     public SceneController SceneController;
+    private String userName;
 
     public LoginModel loginModel = new LoginModel();
     @FXML
@@ -23,6 +24,8 @@ public class LoginController implements Initializable {
     private TextField txtUsername;
     @FXML
     private TextField txtPassword;
+
+
 
 
 
@@ -44,11 +47,8 @@ public class LoginController implements Initializable {
 
         try {
             if (loginModel.isLogin(txtUsername.getText(),txtPassword.getText())){
-
-                isConnected.setText("Logged in successfully");
+                this.userName= txtUsername.getText();
                 SceneController.switchToMenuLandingPage(event);
-                System.out.println("sceneController Successful");
-
 
             }else{
                 isConnected.setText("username and password is incorrect");
@@ -59,9 +59,7 @@ public class LoginController implements Initializable {
     }
 
 
-
-
-
-
-
+    public String getUserName() {
+        return userName;
+    }
 }

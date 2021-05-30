@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox  maxHeight="-Infinity" maxWidth="-Infinity"  minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.MenuController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.MenuController">
    <children>
-      <MenuBar prefHeight="29.0" prefWidth="800.0" >
+      <MenuBar prefHeight="29.0" prefWidth="800.0">
         <menus>
           <Menu mnemonicParsing="false" text="System">
             <items>
               <MenuItem mnemonicParsing="false" text="Close" />
-                  <MenuItem mnemonicParsing="false" text="logout"   onAction="#Logout"/>
+                  <MenuItem mnemonicParsing="false" onAction="#Logout" text="logout" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="account">
@@ -43,7 +43,7 @@
           <RowConstraints maxHeight="267.0" minHeight="196.0" prefHeight="231.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-             <Button defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="74.0" prefWidth="251.0" text="Book A Table" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
+             <Button onAction="#BookTablePage" defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="74.0" prefWidth="251.0" text="Book A Table" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
                  <font>
                      <Font size="16.0" />
                  </font>
@@ -53,7 +53,7 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"  prefHeight="74.0" prefWidth="251.0" text="Manage Account" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="74.0" prefWidth="251.0" text="Manage Account" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="16.0" />
                </font>
