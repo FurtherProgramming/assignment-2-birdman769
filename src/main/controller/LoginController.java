@@ -67,4 +67,9 @@ public class LoginController implements Initializable {
         SceneController = new SceneController();
         SceneController.switchToRegisterPage(event);
     }
+
+    public void ForgotPassword(ActionEvent event) throws IOException {
+        SceneController = new SceneController();
+        SceneController.switchToResetPage(event);
+    }
 }

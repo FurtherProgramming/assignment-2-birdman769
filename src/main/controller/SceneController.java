@@ -62,6 +62,22 @@ public class SceneController {
         stage.setScene(BookingPageScene);
         stage.show();
     }
+
+    public void switchToResetPage(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("../ui/reset.fxml"));
+        Scene BookingPageScene = new Scene(root);
+        stage.setScene(BookingPageScene);
+        stage.show();
+    }
+
+    public void switchToQuestionPage(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("../ui/question.fxml"));
+        Scene BookingPageScene = new Scene(root);
+        stage.setScene(BookingPageScene);
+        stage.show();
+    }
 }
 
 

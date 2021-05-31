@@ -16,9 +16,13 @@ public class UserController {
     private TextField age;
 
 
+
+
     public void populateFields(ActionEvent event) throws IOException {
 
+    }
 
+    public void setCurrentUser(String currentUser) {
 
     }
 }

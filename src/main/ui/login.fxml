@@ -9,19 +9,24 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.LoginController">
     <children>
-            <Label fx:id="isConnected" layoutX="23.0" layoutY="225.0" text="Status">
+            <Label fx:id="isConnected" layoutX="14.0" layoutY="225.0" text="Status">
 
             </Label>
-      <TextField fx:id="txtUsername" layoutX="80.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="160.0" />
-      <PasswordField fx:id="txtPassword" layoutX="80.0" layoutY="80.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="160.0" AnchorPane.bottomAnchor="127.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="93.0" />
-      <Button defaultButton="true" layoutX="80.0" layoutY="120.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Login" prefHeight="35.0" prefWidth="160.0" text="Login" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="140.0">
+      <TextField fx:id="txtUsername" layoutX="80.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="160.0" />
+      <PasswordField fx:id="txtPassword" layoutX="80.0" layoutY="68.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="160.0" AnchorPane.bottomAnchor="152.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="68.0" />
+      <Button defaultButton="true" layoutX="80.0" layoutY="118.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Login" prefHeight="35.0" prefWidth="160.0" text="Login" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="118.0">
           <font>
               <Font size="16.0" />
           </font></Button>
-        <Button defaultButton="true" layoutX="80.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Register" prefHeight="35.0" prefWidth="160.0" text="Register" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="180.0">
+        <Button defaultButton="true" layoutX="80.0" layoutY="169.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Register" prefHeight="35.0" prefWidth="160.0" text="Register" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="169.0">
          <font>
             <Font size="16.0" />
          </font></Button>
+      <Button defaultButton="true" layoutX="80.0" layoutY="216.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ForgotPassword" prefHeight="35.0" prefWidth="160.0" text="forgot password?" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
 
     </children>
 
