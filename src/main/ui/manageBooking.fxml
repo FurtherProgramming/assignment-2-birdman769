@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -37,74 +35,71 @@
       </MenuBar>
       <GridPane prefHeight="586.0" prefWidth="800.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="395.0" minWidth="10.0" prefWidth="190.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="710.0" minWidth="10.0" prefWidth="610.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="395.0" minWidth="10.0" prefWidth="263.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="710.0" minWidth="10.0" prefWidth="537.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="187.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="384.0" minHeight="10.0" prefHeight="384.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="187.0" minHeight="0.0" prefHeight="58.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="384.0" minHeight="10.0" prefHeight="241.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="437.0" minHeight="10.0" prefHeight="263.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pick A Date:" wrappingWidth="181.13671875">
-               <font>
-                  <Font name="Bell MT" size="27.0" />
-               </font>
-            </Text>
-            <DatePicker fx:id="date" onAction="#setDate" prefHeight="80.0" prefWidth="399.0" promptText="Please choose a date" GridPane.columnIndex="1" />
-            <GridPane prefHeight="384.0" prefWidth="363.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="404.0" minWidth="10.0" prefWidth="396.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="214.0" />
-              </columnConstraints>
+            <GridPane prefHeight="384.0" prefWidth="675.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
               <rowConstraints>
-                <RowConstraints maxHeight="74.0" minHeight="0.0" prefHeight="57.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="335.0" minHeight="10.0" prefHeight="303.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="122.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="296.0" minHeight="0.0" prefHeight="92.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="335.0" minHeight="10.0" prefHeight="87.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="122.0" minHeight="0.0" prefHeight="66.0" vgrow="SOMETIMES" />
               </rowConstraints>
+               <columnConstraints>
+                  <ColumnConstraints />
+               </columnConstraints>
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
-                     <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Button mnemonicParsing="false" prefHeight="126.0" prefWidth="156.0" text="Table 1" />
-                              <Button mnemonicParsing="false" prefHeight="126.0" prefWidth="156.0" text="Table 2" />
-                              <Button mnemonicParsing="false" prefHeight="126.0" prefWidth="156.0" text="Table 3" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Button mnemonicParsing="false" prefHeight="126.0" prefWidth="156.0" text="Table 4" />
-                              <Button mnemonicParsing="false" prefHeight="126.0" prefWidth="156.0" text="Table 5" />
-                              <Button mnemonicParsing="false" prefHeight="126.0" prefWidth="156.0" text="Table 6" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Button mnemonicParsing="false" prefHeight="126.0" prefWidth="156.0" text="Table 7" />
-                              <Button mnemonicParsing="false" prefHeight="126.0" prefWidth="156.0" text="Table 8" />
-                              <Button mnemonicParsing="false" prefHeight="126.0" prefWidth="156.0" text="Table 9" />
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-                  <Text fx:id="mainTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Pick A Table:" textAlignment="CENTER" wrappingWidth="399.13671875">
+                  <Text fx:id="mainTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Date: 2021-05-27 " wrappingWidth="237.13671875">
                      <font>
-                        <Font name="Bell MT" size="27.0" />
+                        <Font name="Bell MT" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="bookingDate" strokeType="OUTSIDE" strokeWidth="0.0" text="Table: 7" wrappingWidth="237.13671875" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Bell MT" size="24.0" />
                      </font>
                   </Text>
                </children>
             </GridPane>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pick A Date:" wrappingWidth="181.13671875">
+            <Text fx:id="bookingTableNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Bookings:" textAlignment="CENTER" wrappingWidth="237.13671875" GridPane.columnIndex="1">
                <font>
-                  <Font name="Bell MT" size="27.0" />
+                  <Font name="Bell MT Bold" size="27.0" />
                </font>
             </Text>
-             <Button onAction="#submitBooking" defaultButton="true" layoutX="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="74.0" prefWidth="394.0" text="Submit" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                 <font>
-                     <Font size="16.0" />
-                 </font>
-             </Button>
+            <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="271.0" prefWidth="321.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="280.0" minHeight="0.0" prefHeight="89.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="280.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="159.0" minHeight="10.0" prefHeight="88.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="25.0" minHeight="4.0" prefHeight="4.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#submitBooking" prefHeight="74.0" prefWidth="227.0" text="Edit Booking" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#submitBooking" prefHeight="74.0" prefWidth="227.0" text="Cancel Booking" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#submitBooking" prefHeight="74.0" prefWidth="227.0" text="Back" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </GridPane>
          </children>
       </GridPane>
    </children>

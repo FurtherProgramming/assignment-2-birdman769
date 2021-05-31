@@ -15,8 +15,14 @@ public class MenuController {
     public void BookTablePage(ActionEvent event) throws IOException{
         SceneController = new SceneController();
         SceneController.switchToBookingPage(event);
+    }
+    public void manageBookingPage(ActionEvent event) throws IOException {
+        SceneController = new SceneController();
+        SceneController.switchToManageBooking(event);
+    }
 
-
-
+    public void manageAccountPage(ActionEvent event) throws IOException {
+        SceneController = new SceneController();
+        SceneController.switchToManageAccount(event);
     }
 }

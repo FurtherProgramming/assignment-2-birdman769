@@ -31,9 +31,33 @@ public class SceneController {
     }
     //when user presses book a table, load the booking page
     public void switchToBookingPage(ActionEvent event) throws IOException {
-        System.out.println("switching");
+
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("../ui/booking.fxml"));
+        Scene BookingPageScene = new Scene(root);
+        stage.setScene(BookingPageScene);
+        stage.show();
+    }
+    public void switchToManageBooking(ActionEvent event) throws IOException {
+
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("../ui/manageBooking.fxml"));
+        Scene BookingPageScene = new Scene(root);
+        stage.setScene(BookingPageScene);
+        stage.show();
+    }
+
+    public void switchToManageAccount(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("../ui/manageAccount.fxml"));
+        Scene BookingPageScene = new Scene(root);
+        stage.setScene(BookingPageScene);
+        stage.show();
+    }
+
+    public void switchToRegisterPage(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("../ui/register.fxml"));
         Scene BookingPageScene = new Scene(root);
         stage.setScene(BookingPageScene);
         stage.show();

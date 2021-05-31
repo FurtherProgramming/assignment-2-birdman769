@@ -18,7 +18,7 @@
           <font>
               <Font size="16.0" />
           </font></Button>
-        <Button defaultButton="true" layoutX="80.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Login" prefHeight="35.0" prefWidth="160.0" text="Register" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="180.0">
+        <Button defaultButton="true" layoutX="80.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Register" prefHeight="35.0" prefWidth="160.0" text="Register" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="180.0">
          <font>
             <Font size="16.0" />
          </font></Button>

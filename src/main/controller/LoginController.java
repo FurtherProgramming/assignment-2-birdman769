@@ -62,4 +62,9 @@ public class LoginController implements Initializable {
     public String getUserName() {
         return userName;
     }
+
+    public void Register(ActionEvent event) throws IOException {
+        SceneController = new SceneController();
+        SceneController.switchToRegisterPage(event);
+    }
 }
