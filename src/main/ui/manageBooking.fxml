@@ -54,19 +54,19 @@
                   <ColumnConstraints />
                </columnConstraints>
                <children>
-                  <Text fx:id="mainTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Date: 2021-05-27 " wrappingWidth="237.13671875">
+                  <Text fx:id="bookingDate" strokeType="OUTSIDE" strokeWidth="0.0" text="Date: 2021-05-27 " wrappingWidth="237.13671875">
                      <font>
                         <Font name="Bell MT" size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="bookingDate" strokeType="OUTSIDE" strokeWidth="0.0" text="Table: 7" wrappingWidth="237.13671875" GridPane.rowIndex="1">
+                  <Text fx:id="bookingTableNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Table: 7" wrappingWidth="237.13671875" GridPane.rowIndex="1">
                      <font>
                         <Font name="Bell MT" size="24.0" />
                      </font>
                   </Text>
                </children>
             </GridPane>
-            <Text fx:id="bookingTableNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Bookings:" textAlignment="CENTER" wrappingWidth="237.13671875" GridPane.columnIndex="1">
+            <Text fx:id="bookingTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Bookings:" textAlignment="CENTER" wrappingWidth="237.13671875" GridPane.columnIndex="1">
                <font>
                   <Font name="Bell MT Bold" size="27.0" />
                </font>
@@ -83,17 +83,17 @@
                   <RowConstraints maxHeight="25.0" minHeight="4.0" prefHeight="4.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#submitBooking" prefHeight="74.0" prefWidth="227.0" text="Edit Booking" textAlignment="CENTER" textFill="WHITE">
+                  <Button defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editBooking" prefHeight="74.0" prefWidth="227.0" text="Edit Booking" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#submitBooking" prefHeight="74.0" prefWidth="227.0" text="Cancel Booking" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="1">
+                  <Button defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cancelBooking" prefHeight="74.0" prefWidth="227.0" text="Cancel Booking" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="1">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#submitBooking" prefHeight="74.0" prefWidth="227.0" text="Back" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="2">
+                  <Button defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#back" prefHeight="74.0" prefWidth="227.0" text="Back" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="2">
                      <font>
                         <Font size="16.0" />
                      </font>

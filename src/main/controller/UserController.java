@@ -1,28 +1,17 @@
 package main.controller;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-
-import java.awt.*;
-import java.io.IOException;
+//simple controller for the current user data- allows current user details to be passed between
+//scenes and controllers
 
 public class UserController {
 
-    @FXML
-    private TextField firstName;
-    @FXML
-    private TextField lastName;
-    @FXML
-    private TextField age;
+    private String username;
 
-
-
-
-    public void populateFields(ActionEvent event) throws IOException {
-
-    }
 
     public void setCurrentUser(String currentUser) {
-
+        this.username = currentUser;
+    }
+    public String getUsername(){
+        return this.username;
     }
 }

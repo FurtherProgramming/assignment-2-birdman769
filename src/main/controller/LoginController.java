@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
+import main.Main;
 import main.model.LoginModel;
 
 import java.io.IOException;
@@ -18,14 +19,13 @@ public class LoginController implements Initializable {
     private String userName;
 
     public LoginModel loginModel = new LoginModel();
+    public UserController userController = new UserController();
     @FXML
     private Label isConnected;
     @FXML
-    private TextField txtUsername;
+    public TextField txtUsername;
     @FXML
     private TextField txtPassword;
-
-
 
 
 
@@ -48,6 +48,10 @@ public class LoginController implements Initializable {
         try {
             if (loginModel.isLogin(txtUsername.getText(),txtPassword.getText())){
                 this.userName= txtUsername.getText();
+                userController.setCurrentUser(txtUsername.getText());
+                Main.updateUserController(userController);
+                userController = Main.getUserController();
+                System.out.println("current user:  "+ userController.getUsername());
                 SceneController.switchToMenuLandingPage(event);
 
             }else{

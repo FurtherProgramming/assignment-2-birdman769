@@ -1,8 +1,6 @@
 package main.model;
 
 import main.SQLConnection;
-import org.sqlite.SQLiteConnection;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +9,9 @@ import java.sql.SQLException;
 public class LoginModel {
 
     Connection connection;
+    private int currentUserId;
+    private String currentUsername;
+
 
     public LoginModel(){
 
@@ -41,6 +42,9 @@ public class LoginModel {
 
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
+                currentUserId= resultSet.getInt(1);
+                currentUsername= resultSet.getString(2);
+
                 return true;
             }
             else{
@@ -57,4 +61,11 @@ public class LoginModel {
 
     }
 
+    public String getCurrentUsername() {
+        return currentUsername;
+    }
+
+    public int getCurrentUserId() {
+        return currentUserId;
+    }
 }

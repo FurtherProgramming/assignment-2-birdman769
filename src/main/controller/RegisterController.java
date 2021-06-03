@@ -98,14 +98,13 @@ public class RegisterController {
             errors++;
         }
        if(errors ==0) {
-           System.out.println(username + firstName+lastName+age+password);
            registerModel.RegisterUser(firstName,lastName,Integer.parseInt(age),username,password, question, answer);
            this.changeToLogin(event);
        }
 
     }
     public void resetPassword(ActionEvent event) throws IOException{
-        System.out.println(resetMode.getText());
+
 
         if(resetMode.getText().equals("Enter Username")){
             usernameReset = resetUserInput.getText();
