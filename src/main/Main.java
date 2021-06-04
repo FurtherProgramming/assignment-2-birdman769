@@ -5,18 +5,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import main.controller.UserController;
+import main.controller.SessionController;
 
 public class Main extends Application {
     //functions similar to a global databundle. This global userController can be passed between scenes/controllers after the user has logged in.
     //username is set in the controller during login, this can be accessed by a instantiating a local userController when information on user
     //is needed
-    public static UserController userController = new UserController();
-    public static UserController getUserController(){
-        return userController;
+    public static SessionController sessionController = new SessionController();
+    public static SessionController getSessionController(){
+        return sessionController;
     }
-    public static void updateUserController(UserController updated){
-        userController = updated;
+    public static void updateUserController(SessionController updated){
+        sessionController = updated;
     }
     @Override
     public void start(Stage primaryStage) throws Exception{

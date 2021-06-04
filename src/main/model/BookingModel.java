@@ -1,5 +1,6 @@
 package main.model;
 
+import javafx.util.Pair;
 import main.SQLConnection;
 
 import java.sql.*;
@@ -58,7 +59,6 @@ public class BookingModel {
 
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                System.out.println(" a user booking exists!");
                 preparedStatement.close();
                 resultSet.close();
                 connection.close();
@@ -79,15 +79,12 @@ public class BookingModel {
         ResultSet resultSet = null;
         String query = "select * from Bookings where tableNumber = ? and bookingDate= ?";
         try {
-
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, table);
             preparedStatement.setString(2, String.valueOf(date));
 
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                System.out.println("another booking exists!");
-
                 return true;
             } else {
                 return false;
@@ -104,8 +101,6 @@ public class BookingModel {
 
     public boolean addBooking(LocalDate date, int table, String user) {
         connection = SQLConnection.connect();
-        System.out.println("adding");
-
         try { // the mysql insert statement
             String query = " insert into Bookings (username, bookingId, tableNumber, bookingDate)"
                     + " values (?, ?, ?, ?)";
@@ -155,6 +150,88 @@ public class BookingModel {
         }
         return tablesBooked;
     }
+
+    public ArrayList<String[]> getUserBookings(String username) {
+        return null;
+    }
+
+    public Pair<Integer, String> getNextBooking(String user, int bookingTarget) throws SQLException {
+        int control =0;
+
+        Pair<Integer, String> pair = new Pair<>(1, "One");
+        connection = SQLConnection.connect();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String query = "select * from Bookings where username=?";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+
+            preparedStatement.setString(1, user);
+
+            resultSet = preparedStatement.executeQuery();
+            while(control < bookingTarget) {
+              pair = new Pair<>((resultSet.getInt("tableNumber")),resultSet.getString("bookingDate"));
+              resultSet.next();
+              control ++;
+
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+
+        } finally {
+
+            preparedStatement.close();
+            resultSet.close();
+            connection.close();
+        }
+        System.out.println(pair);
+        return pair;
+    }
+    public int getUserTotalBookings(String user) throws SQLException {
+        int count =0;
+        connection = SQLConnection.connect();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String query = "select * from Bookings where username=?";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, user);
+            resultSet = preparedStatement.executeQuery();
+            while( resultSet.next()) {
+                count++;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            preparedStatement.close();
+            resultSet.close();
+            connection.close();
+        }
+        return count;
+    }
+
+    public boolean removeBooking(String date,int table){
+        String sql = "DELETE FROM Bookings WHERE tableNumber = ? and bookingDate =?";
+        connection = SQLConnection.connect();
+
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+
+            pstmt.setInt(1, table);
+            pstmt.setString(2, date);
+            // execute the delete statement
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+        return true;
+    }
+
+
+
 }
 
 

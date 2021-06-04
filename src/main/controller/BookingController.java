@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.util.Pair;
 import main.Main;
 import main.model.BookingModel;
 import java.io.IOException;
@@ -33,7 +34,10 @@ public class BookingController {
     //fxml and variables for manageBooking page
 
     @FXML
-    private Text bookingDate, bookingTableNumber, bookingTitle;
+    private Text bookingDate, bookingTableNumber,changeStatus;
+
+    private int bookingTarget = 1;
+    private Pair<Integer, String> pair= null;
 
 
     //shared variables across both pages
@@ -41,14 +45,31 @@ public class BookingController {
 
     public BookingModel bookingModel = new BookingModel();
 
-    private UserController userController = Main.getUserController();
+    private SessionController sessionController = Main.getSessionController();
 
 
     //our methods
     //initilize our bookings on the Manage Booking Page
-    public void initialize() {
+    public void initialize() throws SQLException {
+        try{
+            getNextBooking();
+        }catch(Exception e){
+            //this prevents an error if we are loading the booking page and not the manage page
+        }
+
 
     }
+    public void getNextBooking() throws SQLException {
+        int totalBookings= bookingModel.getUserTotalBookings(sessionController.getUsername());
+        if(bookingTarget >= totalBookings+2)
+            bookingTarget= 2;
+        pair = bookingModel.getNextBooking(sessionController.getUsername(), bookingTarget);
+        bookingTarget++;
+        bookingTableNumber.setText(String.valueOf(pair.getKey()));
+        bookingDate.setText(pair.getValue());
+        changeStatus.setText("");
+    }
+
 
 
     public void setDate(ActionEvent event) throws IOException, SQLException {
@@ -71,19 +92,22 @@ public class BookingController {
     }
 
     public void submitBooking(ActionEvent event) throws IOException, SQLException {
-       // tab1.setBackground(new Background(new BackgroundFill(Color.BLUE, new CornerRadii(0), Insets.EMPTY)));
         boolean otherUserBooking;
         boolean userBookingExist;
         boolean bookingSuccess;
-        userBookingExist = bookingModel.doesUserBookingExist(javaDate,userController.getUsername());
+        userBookingExist = bookingModel.doesUserBookingExist(javaDate, sessionController.getUsername());
         if (!userBookingExist){
             otherUserBooking = bookingModel.doesOtherUserBookingExist(javaDate,tableNumber);
             if(!otherUserBooking){
-                bookingSuccess= bookingModel.addBooking(javaDate, tableNumber, userController.getUsername());
+                bookingSuccess= bookingModel.addBooking(javaDate, tableNumber, sessionController.getUsername());
 
                 if(bookingSuccess) {
                     BookingStatus.setText("successful booking");
                     this.showBookedTables(javaDate);
+                    //if user is updating rather than making a new booking:
+                    if(sessionController.getTableEdit() != 0 && !sessionController.getDateEdit().equals(null)){
+                        bookingModel.removeBooking(sessionController.getDateEdit(),sessionController.getTableEdit());
+                    }
                 }
                 else
                     BookingStatus.setText("booking failed");
@@ -119,9 +143,18 @@ public class BookingController {
     public void table8(ActionEvent event)  { this.tableNumber=8; }
     public void table9(ActionEvent event)  { this.tableNumber=9; }
 
-    public void editBooking(ActionEvent event) {
-    }
+    public void editBooking(ActionEvent event) throws IOException {
+        sessionController.setDateEdit(bookingDate.getText());
+        sessionController.setTableEdit(Integer.parseInt(bookingTableNumber.getText()));
+        SceneController = new SceneController();
+        SceneController.switchToBookingPage((event));
 
-    public void cancelBooking(ActionEvent event) {
+    }
+    public void cancelBooking(ActionEvent event) throws SQLException {
+        boolean success;
+       success= bookingModel.removeBooking(bookingDate.getText(),Integer.parseInt(bookingTableNumber.getText()));
+       this.getNextBooking();
+       changeStatus.setText("booking deleted!");
+
     }
 }

@@ -88,6 +88,21 @@ public class SceneController {
     }
 
 
+    public void switchToAdminLandingPage(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("../ui/adminPage.fxml"));
+        Scene menuPageScene = new Scene(root);
+        stage.setScene(menuPageScene);
+        stage.show();
+    }
+
+    public void switchToBookingManager(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("../ui/adminBookingManager.fxml"));
+        Scene menuPageScene = new Scene(root);
+        stage.setScene(menuPageScene);
+        stage.show();
+    }
 }
 
 

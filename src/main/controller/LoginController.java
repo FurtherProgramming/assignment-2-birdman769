@@ -19,7 +19,7 @@ public class LoginController implements Initializable {
     private String userName;
 
     public LoginModel loginModel = new LoginModel();
-    public UserController userController = new UserController();
+    public SessionController sessionController = Main.getSessionController();
     @FXML
     private Label isConnected;
     @FXML
@@ -48,11 +48,15 @@ public class LoginController implements Initializable {
         try {
             if (loginModel.isLogin(txtUsername.getText(),txtPassword.getText())){
                 this.userName= txtUsername.getText();
-                userController.setCurrentUser(txtUsername.getText());
-                Main.updateUserController(userController);
-                userController = Main.getUserController();
-                System.out.println("current user:  "+ userController.getUsername());
-                SceneController.switchToMenuLandingPage(event);
+                boolean admin= loginModel.isAdmin(txtUsername.getText());
+                sessionController.setCurrentUser(txtUsername.getText());
+                Main.updateUserController(sessionController);
+                if(admin){
+                    sessionController.setAdmin(true);
+                    SceneController.switchToAdminLandingPage(event);
+                }else{SceneController.switchToMenuLandingPage(event); }
+
+
 
             }else{
                 isConnected.setText("username and password is incorrect");

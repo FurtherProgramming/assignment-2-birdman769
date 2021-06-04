@@ -25,4 +25,17 @@ public class MenuController {
         SceneController = new SceneController();
         SceneController.switchToManageAccount(event);
     }
+
+    public void adminBookingManager(ActionEvent event) throws IOException {
+        SceneController = new SceneController();
+        SceneController.switchToBookingManager(event);
+    }
+
+    public void adminUserManager(ActionEvent event) throws IOException {
+        SceneController = new SceneController();
+        SceneController.switchToManageAccount(event);
+    }
+
+    public void adminCSV(ActionEvent event) {
+    }
 }

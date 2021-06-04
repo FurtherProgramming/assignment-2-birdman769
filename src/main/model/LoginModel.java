@@ -9,8 +9,8 @@ import java.sql.SQLException;
 public class LoginModel {
 
     Connection connection;
-    private int currentUserId;
-    private String currentUsername;
+
+    private boolean isAdmin;
 
 
     public LoginModel(){
@@ -42,8 +42,12 @@ public class LoginModel {
 
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                currentUserId= resultSet.getInt(1);
-                currentUsername= resultSet.getString(2);
+
+                int isAd = resultSet.getInt(9);
+                if(isAd == 1)
+                    isAdmin =true;
+
+
 
                 return true;
             }
@@ -61,11 +65,7 @@ public class LoginModel {
 
     }
 
-    public String getCurrentUsername() {
-        return currentUsername;
-    }
-
-    public int getCurrentUserId() {
-        return currentUserId;
+    public boolean isAdmin(String text) {
+        return isAdmin;
     }
 }
