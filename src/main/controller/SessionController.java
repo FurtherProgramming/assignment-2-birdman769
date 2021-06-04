@@ -9,6 +9,7 @@ public class SessionController {
     private String dateEdit = null;
     private int tableEdit = 0;
     private boolean isAdmin = false;
+    private boolean adminEditing = false;
 
 
     public void setCurrentUser(String currentUser) {
@@ -40,5 +41,19 @@ public class SessionController {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    public boolean isAdminEditing() {
+        return adminEditing;
+    }
+
+    public void setAdminEditing(boolean adminEditing) {
+        this.adminEditing = adminEditing;
+    }
+    public void reset(){
+        setAdmin(false);
+        setAdminEditing(false);
+        setTableEdit(0);
+        setDateEdit(null);
     }
 }
