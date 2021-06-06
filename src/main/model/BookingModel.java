@@ -362,7 +362,6 @@ public class BookingModel {
         String sql = "UPDATE Bookings SET confirmed = ? "
                 + "WHERE tableNumber = ? and bookingDate = ?";
         connection = SQLConnection.connect();
-
         try {
             connection = SQLConnection.connect();
             PreparedStatement pstmt = connection.prepareStatement(sql);
@@ -376,7 +375,6 @@ public class BookingModel {
             System.out.println(e.getMessage());
             return false;
         }
-
         return true;
     }
 
@@ -384,9 +382,7 @@ public class BookingModel {
         HashMap<String, Integer> whitelist = new HashMap<String, Integer>();
         String username;
         int table;
-
         javaDate = javaDate.minusDays(1);
-
         connection = SQLConnection.connect();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet=null;

@@ -20,8 +20,8 @@ public class RegisterModel {
     }
 
     public boolean setNewPassword(String username, String password) {
-        String sql = "UPDATE employee SET password = ?"
-                + "WHERE name = ?";
+        String sql = "UPDATE Employee SET password = ?"
+                + "WHERE username = ?";
         try (Connection conn = connection;
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             // set the corresponding param

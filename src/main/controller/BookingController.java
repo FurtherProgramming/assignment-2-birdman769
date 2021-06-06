@@ -16,13 +16,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-
-
-//due to a large amount of shared variables and features, this booking controller functions for both the admin booking page
-//and the user booking page
+//due to a large amount of shared variables and features, this booking controller functions for both the admin booking/bookingmanagement page
+//and the user booking/bookingmanagement page
 
 public class BookingController {
-
     //FXML and var for booking page
     @FXML
     private DatePicker date;
@@ -67,12 +64,8 @@ public class BookingController {
         if(sessionController.isAdminEditing()){
             isBookingConfirmed(sessionController.getTableEdit(), sessionController.getDateEdit());
             bookingTableNumber.setText(String.valueOf(sessionController.getTableEdit()));
-
-
         }
-
     }
-
     //user booking page methods
     public void getNextBooking() throws SQLException {
         int totalBookings= bookingModel.getUserTotalBookings(sessionController.getUsername());
