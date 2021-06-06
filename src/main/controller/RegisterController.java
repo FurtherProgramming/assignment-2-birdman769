@@ -15,26 +15,10 @@ public class RegisterController {
     public SceneController SceneController;
     public RegisterModel registerModel = new RegisterModel();
     @FXML
-    private TextField usernameRegister;
+    private TextField usernameRegister, firstNameRegister, lastNameRegister, ageRegister, passwordRegister,
+            questionRegister, answerRegister, resetUserInput;
     @FXML
-    private TextField firstNameRegister;
-    @FXML
-    private TextField lastNameRegister;
-    @FXML
-    private TextField ageRegister;
-    @FXML
-    private TextField passwordRegister;
-    @FXML
-    private TextField questionRegister;
-    @FXML
-    private TextField answerRegister;
-    @FXML
-    private TextField resetUserInput;
-    @FXML
-    private Text registerError;
-    @FXML
-    private Text resetMode;
-
+    private Text registerError, resetMode;
     //for password reset
     String usernameReset = null;
     boolean resetPasswordMode= false;

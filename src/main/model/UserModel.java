@@ -71,4 +71,53 @@ public class UserModel {
 
         return true;
     }
+
+    public boolean isUserAdmin(String user) throws SQLException {
+        connection = SQLConnection.connect();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        int isAdmin;
+        String query = "select * from Employee where username= ?";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, user);
+            resultSet = preparedStatement.executeQuery();
+
+            if(resultSet.next()) {
+                isAdmin= resultSet.getInt("isAdmin");
+                if(isAdmin == 1)
+                    return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            preparedStatement.close();
+            resultSet.close();
+            connection.close();
+        }
+        return false;
+    }
+
+    public boolean toggleAdmin(String user) {
+        String sql = "UPDATE Employee SET isAdmin = ? "
+                + "WHERE username = ?";
+        connection = SQLConnection.connect();
+        System.out.print(("target"+ user));
+        try {
+            connection = SQLConnection.connect();
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            // set the corresponding param
+            if(isUserAdmin(user))
+            pstmt.setInt(1, 0);
+            if(!isUserAdmin(user))
+                pstmt.setInt(1, 1);
+            pstmt.setString(2, user);
+            // update
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
+    }
 }

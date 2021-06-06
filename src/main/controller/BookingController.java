@@ -85,7 +85,7 @@ public class BookingController {
     }
     public boolean isBookingConfirmed(int table, String date) throws SQLException {
         boolean isConfirmed;
-        isConfirmed= bookingModel.isBookingConfirmed(table,date.toString());
+        isConfirmed= bookingModel.isBookingConfirmed(table, date);
         if(sessionController.isAdminEditing()){
             bookingDate.setText(date);
             if(isConfirmed)
@@ -131,7 +131,7 @@ public class BookingController {
     }
     public void showWhitelistTables(LocalDate javaDate) throws SQLException {
         ArrayList<Button> buttons = getButtons();
-        HashMap<String, Integer> whitelist = new HashMap<>();
+        HashMap<String, Integer> whitelist;
         whitelist=bookingModel.getWhiteList(javaDate);
         for (String i : whitelist.keySet()) {
             System.out.println(whitelist.get(i));
@@ -139,16 +139,12 @@ public class BookingController {
         }
     }
     public boolean checkIfSatYesterday() throws SQLException {
-
        boolean didSit= bookingModel.checkIfSatYesterday(sessionController.getUsername(), tableNumber,javaDate);
        boolean exception = bookingModel.checkIfExceptionExists(tableNumber,javaDate);
-
        if(exception)
         return false;
-
        else
            return didSit;
-
     };
 
     public void createWhitelistException(){
@@ -159,12 +155,12 @@ public class BookingController {
             BookingStatus.setText("exception exists already!");
     }
 
-    public void submitBooking(ActionEvent event) throws  SQLException {
+    public void submitBooking() {
         try {
             boolean otherUserBooking;
             boolean userBookingExist;
             boolean bookingSuccess;
-            boolean covidLocked = false;
+            boolean covidLocked;
             userBookingExist = bookingModel.doesUserBookingExist(javaDate, sessionController.getUsername());
             covidLocked = bookingModel.isDateCovidLocked(javaDate, tableNumber);
             if(!covidLocked) {
@@ -202,6 +198,7 @@ public class BookingController {
             BookingStatus.setText("booking failed");
         }
     }
+
     public void editBooking(ActionEvent event) throws IOException {
         sessionController.setDateEdit(bookingDate.getText());
         sessionController.setTableEdit(Integer.parseInt(bookingTableNumber.getText()));
@@ -209,7 +206,7 @@ public class BookingController {
         SceneController.switchToBookingPage((event));
 
     }
-    public void cancelBooking(ActionEvent event) throws SQLException {
+    public void cancelBooking() throws SQLException {
         boolean success;
         success= bookingModel.removeBooking(bookingDate.getText(),Integer.parseInt(bookingTableNumber.getText()));
         if(sessionController.isAdminEditing())
@@ -222,7 +219,7 @@ public class BookingController {
     //admin booking page methods
 
     @FXML
-    private void adminCovid(ActionEvent event) throws SQLException {
+    private void adminCovid() throws SQLException {
         boolean lock= bookingModel.addCovidLock(javaDate, tableNumber);
 
         if(lock){
@@ -239,15 +236,15 @@ public class BookingController {
 
 
 //these methods assign our table number on click by the user
-    public void table1(ActionEvent event) { this.tableNumber=1; }
-    public void table2(ActionEvent event)  { this.tableNumber=2; }
-    public void table3(ActionEvent event)  { this.tableNumber=3; }
-    public void table4(ActionEvent event)  { this.tableNumber=4; }
-    public void table5(ActionEvent event)  { this.tableNumber=5; }
-    public void table6(ActionEvent event)  { this.tableNumber=6; }
-    public void table7(ActionEvent event)  { this.tableNumber=7; }
-    public void table8(ActionEvent event)  { this.tableNumber=8; }
-    public void table9(ActionEvent event)  { this.tableNumber=9; }
+    public void table1() { this.tableNumber=1; }
+    public void table2()  { this.tableNumber=2; }
+    public void table3()  { this.tableNumber=3; }
+    public void table4()  { this.tableNumber=4; }
+    public void table5()  { this.tableNumber=5; }
+    public void table6()  { this.tableNumber=6; }
+    public void table7()  { this.tableNumber=7; }
+    public void table8()  { this.tableNumber=8; }
+    public void table9()  { this.tableNumber=9; }
 
     public void back(ActionEvent event) throws IOException {
         SceneController = new SceneController();
@@ -270,9 +267,7 @@ public class BookingController {
         SceneController.switchToAdminManageBookingPage((event));
 
     }
-
-    public boolean confirmBooking(ActionEvent event) {
-
+    public boolean confirmBooking() {
         String user = usernameTarget.getText();
         if(user.equals("")){
             changeStatus.setText("no user booked on this date!");
@@ -285,7 +280,5 @@ public class BookingController {
             sessionController.reset();
             return confirm;
         }
-
-
     }
 }

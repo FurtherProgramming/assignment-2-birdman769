@@ -13,7 +13,7 @@ import java.util.*;
 public class UserController {
 
     @FXML
-    private TextField firstName, lastName, age;
+    private TextField account,firstName, lastName, age;
     @FXML
     private Label updateStatus;
 
@@ -25,10 +25,12 @@ public class UserController {
     //our methods
     //initilize our bookings on the Manage Booking Page
     public void initialize() throws SQLException {
-        userDetails=userModel.getUserDetails(sessionController.getUsername());
-        firstName.setText(userDetails.get("firstName"));
-        lastName.setText(userDetails.get("lastName"));
-        age.setText(userDetails.get("age"));
+        if(!sessionController.isAdmin()){
+            userDetails=userModel.getUserDetails(sessionController.getUsername());
+            firstName.setText(userDetails.get("firstName"));
+            lastName.setText(userDetails.get("lastName"));
+            age.setText(userDetails.get("age"));
+        }
     }
 
     public void submitDetails(ActionEvent event) {
@@ -39,9 +41,42 @@ public class UserController {
         else
             updateStatus.setText("update failed!");
     }
+    public void adminSubmitDetails(ActionEvent event) {
+        boolean success;
+        success = userModel.updateUserDetails(account.getText(),firstName.getText(), lastName.getText(), Integer.parseInt(age.getText()));
+        if(success == true)
+            updateStatus.setText("update success!");
+        else
+            updateStatus.setText("update failed!");
+    }
 
+    public void toggleAdmin(ActionEvent event) throws SQLException {
+        userModel.toggleAdmin(account.getText());
+        boolean isAdmin = userModel.isUserAdmin(account.getText());
+
+        if(isAdmin)
+            updateStatus.setText("user is now an admin!");
+        else
+            updateStatus.setText("user is no longer an admin!");
+    }
+
+
+
+    public void searchUser(ActionEvent event) throws SQLException {
+        userDetails=userModel.getUserDetails(account.getText());
+        firstName.setText(userDetails.get("firstName"));
+        lastName.setText(userDetails.get("lastName"));
+        age.setText(userDetails.get("age"));
+    }
     public void back(ActionEvent event) throws IOException {
         SceneController sceneController = new SceneController();
         sceneController.switchToMenuLandingPage((event));
     }
+
+    public void adminBack(ActionEvent event) throws IOException {
+        SceneController sceneController = new SceneController();
+        sceneController.switchToAdminLandingPage(event);
+    }
+
+
 }

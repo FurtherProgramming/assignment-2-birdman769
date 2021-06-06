@@ -33,7 +33,7 @@ public class MenuController {
 
     public void adminUserManager(ActionEvent event) throws IOException {
         SceneController = new SceneController();
-        SceneController.switchToManageAccount(event);
+        SceneController.switchToAdminManageAccount(event);
     }
 
     public void adminCSV(ActionEvent event) {

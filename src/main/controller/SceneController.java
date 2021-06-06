@@ -111,6 +111,14 @@ public class SceneController {
         stage.setScene(menuPageScene);
         stage.show();
     }
+
+    public void switchToAdminManageAccount(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("../ui/adminManageAccount.fxml"));
+        Scene menuPageScene = new Scene(root);
+        stage.setScene(menuPageScene);
+        stage.show();
+    }
 }
 
 
