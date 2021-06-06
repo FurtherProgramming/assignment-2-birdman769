@@ -171,7 +171,7 @@
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#submitBooking" prefHeight="74.0" prefWidth="179.0" text="Whitelist" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Button defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#createWhitelistException" prefHeight="74.0" prefWidth="179.0" text="Whitelist" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="16.0" />
                      </font>

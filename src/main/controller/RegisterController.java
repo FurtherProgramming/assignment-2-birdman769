@@ -14,7 +14,6 @@ public class RegisterController {
 
     public SceneController SceneController;
     public RegisterModel registerModel = new RegisterModel();
-
     @FXML
     private TextField usernameRegister;
     @FXML

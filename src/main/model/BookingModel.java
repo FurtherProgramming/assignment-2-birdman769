@@ -297,17 +297,13 @@ public class BookingModel {
         ResultSet resultSet=null;
         String query = "select * from Bookings where bookingDate = ? and tableNumber= ?";
         try {
-
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, javaDate);
             preparedStatement.setInt(2, tableNumber);
-
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 if(resultSet.getInt("confirmed")== 1)
                     return true;
-
-
             }
             else{
                 return false;
@@ -321,8 +317,6 @@ public class BookingModel {
             resultSet.close();
         }
         return false;
-
-
 
     }
 
@@ -422,7 +416,6 @@ public class BookingModel {
 
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                System.out.print("booking yesterday!");
                 return true;
             }
 
@@ -433,8 +426,54 @@ public class BookingModel {
             preparedStatement.close();
             resultSet.close();
         }
-        System.out.print("no booking yesterday!");
         return false;
+    }
+
+    public boolean insertWhitelistException(LocalDate javaDate, int tableNumber) {
+
+        connection = SQLConnection.connect();
+        try { // the mysql insert statement
+            String query = " insert into Whitelist (whitelistDate, tableNumber)"
+                    + " values (?, ?)";
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString(1, String.valueOf(javaDate));
+            preparedStmt.setInt(2, tableNumber);
+            // execute the preparedstatement
+            preparedStmt.execute();
+            connection.close();
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean checkIfExceptionExists(int tableNumber, LocalDate javaDate) throws SQLException {
+        connection = SQLConnection.connect();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet=null;
+        javaDate = javaDate.minusDays(1);
+        String query = "select * from Whitelist where whitelistDate = ? and tableNumber= ?";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, String.valueOf(javaDate));
+            preparedStatement.setInt(2, tableNumber);
+
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return true;
+            }
+
+        }
+        catch (Exception e)
+        {System.out.print(e.getMessage());
+        }finally {
+            preparedStatement.close();
+            resultSet.close();
+        }
+        return false;
+
     }
 }
 

@@ -141,9 +141,24 @@ public class BookingController {
     public boolean checkIfSatYesterday() throws SQLException {
 
        boolean didSit= bookingModel.checkIfSatYesterday(sessionController.getUsername(), tableNumber,javaDate);
+       boolean exception = bookingModel.checkIfExceptionExists(tableNumber,javaDate);
 
-        return didSit;
+       if(exception)
+        return false;
+
+       else
+           return didSit;
+
     };
+
+    public void createWhitelistException(){
+        boolean status = bookingModel.insertWhitelistException(javaDate, tableNumber);
+        if(status)
+            BookingStatus.setText("exception added");
+        else
+            BookingStatus.setText("exception exists already!");
+    }
+
     public void submitBooking(ActionEvent event) throws  SQLException {
         try {
             boolean otherUserBooking;

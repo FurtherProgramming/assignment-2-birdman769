@@ -8,7 +8,6 @@ import java.util.Map;
 
 public class RegisterModel {
 
-
     Connection connection;
 
     public RegisterModel() {
@@ -16,9 +15,7 @@ public class RegisterModel {
         connection = SQLConnection.connect();
         if (connection == null)
             System.exit(1);
-
     }
-
     public boolean setNewPassword(String username, String password) {
         String sql = "UPDATE Employee SET password = ?"
                 + "WHERE username = ?";
