@@ -134,7 +134,6 @@ public class BookingController {
         HashMap<String, Integer> whitelist;
         whitelist=bookingModel.getWhiteList(javaDate);
         for (String i : whitelist.keySet()) {
-            System.out.println(whitelist.get(i));
                 buttons.get(whitelist.get(i)).setText(i);
         }
     }

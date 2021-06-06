@@ -60,8 +60,6 @@ public class UserController {
             updateStatus.setText("user is no longer an admin!");
     }
 
-
-
     public void searchUser(ActionEvent event) throws SQLException {
         userDetails=userModel.getUserDetails(account.getText());
         firstName.setText(userDetails.get("firstName"));

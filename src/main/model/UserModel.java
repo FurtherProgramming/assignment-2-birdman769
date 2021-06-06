@@ -13,8 +13,6 @@ public class UserModel {
 
     Connection connection;
 
-
-
     public Map<String,String> getUserDetails(String user) throws SQLException {
         Map<String, String> userDetails = new HashMap<>();
         connection = SQLConnection.connect();
@@ -42,7 +40,6 @@ public class UserModel {
             connection.close();
         }
 
-        System.out.println(userDetails.get("firstName"));
         return userDetails;
     }
 
@@ -102,7 +99,7 @@ public class UserModel {
         String sql = "UPDATE Employee SET isAdmin = ? "
                 + "WHERE username = ?";
         connection = SQLConnection.connect();
-        System.out.print(("target"+ user));
+
         try {
             connection = SQLConnection.connect();
             PreparedStatement pstmt = connection.prepareStatement(sql);

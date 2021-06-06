@@ -7,7 +7,6 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class BookingModel {
 
@@ -183,7 +182,6 @@ public class BookingModel {
             resultSet.close();
             connection.close();
         }
-        System.out.println(pair);
         return pair;
     }
     public int getUserTotalBookings(String user) throws SQLException {
