@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -64,10 +65,7 @@ public class BookingController {
             //this prevents an error if we are loading the booking page and not the manage page
         }
         if(sessionController.isAdminEditing()){
-            System.out.println("admin is editing");
             isBookingConfirmed(sessionController.getTableEdit(), sessionController.getDateEdit());
-            System.out.print(sessionController.getTableEdit());
-            System.out.print(sessionController.getDateEdit());
             bookingTableNumber.setText(String.valueOf(sessionController.getTableEdit()));
 
 
@@ -95,14 +93,12 @@ public class BookingController {
     public boolean isBookingConfirmed(int table, String date) throws SQLException {
         boolean isConfirmed;
         isConfirmed= bookingModel.isBookingConfirmed(table,date.toString());
-        System.out.println(isConfirmed);
         if(sessionController.isAdminEditing()){
-            System.out.println("we are here");
             bookingDate.setText(date);
             if(isConfirmed)
             confirmed.setText("confirmed booking");
+            usernameTarget.setText(bookingModel.getBookingUsername(table,date));
         }
-        usernameTarget.setText(bookingModel.getBookingUsername(table,date));
         return isConfirmed;
     }
 
@@ -114,13 +110,17 @@ public class BookingController {
         this.showBookedTables(javaDate);
 
     }
+    public <Button> ArrayList<javafx.scene.control.Button> getButtons(){
+        ArrayList<javafx.scene.control.Button> buttons = new ArrayList<javafx.scene.control.Button>();
+        List<javafx.scene.control.Button> buttonsList = Arrays.asList(tab1,tab2,tab3,tab4,tab5,tab6,tab7,tab8,tab9);
+        buttons.addAll(buttonsList);
+        return buttons;
+    }
 
     private void showBookedTables(LocalDate javaDate) throws SQLException {
         ArrayList<Integer> tablesBooked= new ArrayList<Integer>();
         tablesBooked = bookingModel.getBookedTables(javaDate);
-        ArrayList<Button> buttons = new ArrayList<Button>();
-        List<Button> buttonsList = Arrays.asList(tab1,tab2,tab3,tab4,tab5,tab6,tab7,tab8,tab9);
-        buttons.addAll(buttonsList);
+        ArrayList<Button> buttons = getButtons();
         for (int i=0; i < buttons.size(); i++)
             buttons.get(i).setTextFill(Color.BLACK);
         for (int i=0; i < tablesBooked.size(); i++)
@@ -130,13 +130,27 @@ public class BookingController {
     public void showCovidTables(LocalDate javaDate) throws SQLException {
         ArrayList<Integer> tablesLocked= new ArrayList<Integer>();
         tablesLocked = bookingModel.getCovidTables(javaDate);
-        ArrayList<Button> buttons = new ArrayList<Button>();
-        List<Button> buttonsList = Arrays.asList(tab1,tab2,tab3,tab4,tab5,tab6,tab7,tab8,tab9);
-        buttons.addAll(buttonsList);
+        ArrayList<Button> buttons = getButtons();
         for (int i=0; i < tablesLocked.size(); i++)
             buttons.get(tablesLocked.get(i)-1).setTextFill(Color.ORANGE);
+        if(sessionController.isAdmin())
+        showWhitelistTables(javaDate);
     }
+    public void showWhitelistTables(LocalDate javaDate) throws SQLException {
+        ArrayList<Button> buttons = getButtons();
+        HashMap<String, Integer> whitelist = new HashMap<>();
+        whitelist=bookingModel.getWhiteList(javaDate);
+        for (String i : whitelist.keySet()) {
+            System.out.println(whitelist.get(i));
+                buttons.get(whitelist.get(i)).setText(i);
+        }
+    }
+    public boolean checkIfSatYesterday() throws SQLException {
 
+       boolean didSit= bookingModel.checkIfSatYesterday(sessionController.getUsername(), tableNumber,javaDate);
+
+        return didSit;
+    };
     public void submitBooking(ActionEvent event) throws  SQLException {
         try {
             boolean otherUserBooking;
@@ -149,17 +163,22 @@ public class BookingController {
                 if (!userBookingExist) {
                     otherUserBooking = bookingModel.doesOtherUserBookingExist(javaDate, tableNumber);
                     if (!otherUserBooking) {
+                        if(!checkIfSatYesterday()) {
                         bookingSuccess = bookingModel.addBooking(javaDate, tableNumber, sessionController.getUsername());
+                         if (bookingSuccess) {
+                                BookingStatus.setText("successful booking");
+                                this.showBookedTables(javaDate);
+                                if (sessionController.getTableEdit() != 0 && !sessionController.getDateEdit().equals(null)) {
+                                    bookingModel.removeBooking(sessionController.getDateEdit(), sessionController.getTableEdit());
+                                }
+                            }else{
+                                BookingStatus.setText("booking failed");
 
-                        if (bookingSuccess) {
-                            BookingStatus.setText("successful booking");
-                            this.showBookedTables(javaDate);
-                            //if user is updating rather than making a new booking:
-                            if (sessionController.getTableEdit() != 0 && !sessionController.getDateEdit().equals(null)) {
-                                bookingModel.removeBooking(sessionController.getDateEdit(), sessionController.getTableEdit());
                             }
+                            //if user is updating rather than making a new booking:
+
                         } else
-                            BookingStatus.setText("booking failed");
+                            BookingStatus.setText("you sat here yesterday");
                     } else {
                         BookingStatus.setText("another user has booked this");
                     }
@@ -197,7 +216,7 @@ public class BookingController {
     @FXML
     private void adminCovid(ActionEvent event) throws SQLException {
         boolean lock= bookingModel.addCovidLock(javaDate, tableNumber);
-        System.out.println(lock);
+
         if(lock){
             BookingStatus.setText("table " + tableNumber + " locked!!");
         }else {
@@ -237,7 +256,7 @@ public class BookingController {
     public void adminEditBooking(ActionEvent event) throws IOException {
         sessionController.setTableEdit(tableNumber);
         sessionController.setDateEdit(javaDate.toString());
-        System.out.println("ADMIN SET "+ tableNumber+ " DATE "+ javaDate.toString());
+
         sessionController.setAdminEditing(true);
         SceneController = new SceneController();
         SceneController.switchToAdminManageBookingPage((event));

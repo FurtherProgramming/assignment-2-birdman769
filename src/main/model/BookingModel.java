@@ -380,6 +380,66 @@ public class BookingModel {
         return true;
     }
 
+    public HashMap<String, Integer> getWhiteList(LocalDate javaDate) throws SQLException {
+        HashMap<String, Integer> whitelist = new HashMap<String, Integer>();
+        String username;
+        int table;
+
+        javaDate = javaDate.minusDays(1);
+
+        connection = SQLConnection.connect();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet=null;
+        String query = "select * from Bookings where bookingDate = ?";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, String.valueOf(javaDate));
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                username=  resultSet.getString("username");
+                table=  resultSet.getInt("tableNumber");
+                whitelist.put(username,table);
+            }
+        }
+        catch (Exception e)
+        {System.out.print(e.getMessage());
+        }finally {
+            preparedStatement.close();
+            resultSet.close();
+        }
+    return whitelist;
+    }
+
+    public boolean checkIfSatYesterday(String username, int tableNumber, LocalDate javaDate) throws SQLException {
+        connection = SQLConnection.connect();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet=null;
+        javaDate = javaDate.minusDays(1);
+        String query = "select * from Bookings where bookingDate = ? and tableNumber= ? and username=?";
+        try {
+
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, String.valueOf(javaDate));
+            preparedStatement.setInt(2, tableNumber);
+            preparedStatement.setString(3, username);
+
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                System.out.print("booking yesterday!");
+                return true;
+            }
+
+        }
+        catch (Exception e)
+        {System.out.print(e.getMessage());
+        }finally {
+            preparedStatement.close();
+            resultSet.close();
+        }
+        System.out.print("no booking yesterday!");
+        return false;
+    }
 }
 
 
