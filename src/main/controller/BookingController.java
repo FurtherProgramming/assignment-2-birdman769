@@ -110,7 +110,7 @@ public class BookingController {
     }
 
     private void showBookedTables(LocalDate javaDate) throws SQLException {
-        ArrayList<Integer> tablesBooked= new ArrayList<Integer>();
+        ArrayList<Integer> tablesBooked;
         tablesBooked = bookingModel.getBookedTables(javaDate);
         ArrayList<Button> buttons = getButtons();
         for (int i=0; i < buttons.size(); i++) {
@@ -123,7 +123,7 @@ public class BookingController {
         showCovidTables(javaDate);
     }
     public void showCovidTables(LocalDate javaDate) throws SQLException {
-        ArrayList<Integer> tablesLocked= new ArrayList<Integer>();
+        ArrayList<Integer> tablesLocked;
         tablesLocked = bookingModel.getCovidTables(javaDate);
         ArrayList<Button> buttons = getButtons();
         for (int i=0; i < tablesLocked.size(); i++)

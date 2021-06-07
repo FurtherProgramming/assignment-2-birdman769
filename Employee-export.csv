@@ -1,0 +1,5 @@
+id, name, lastName, age, username, password, question, answer, isAdmin
+1,Homy,Ash, 23,test,password,name of my cat?,homy,0
+2,Matthew,Bird, 25,matthew,newpass,middle name?,paul,1
+6,admin,admin, 25,admin,admin,admin?,admin,1
+7,janet,janes, 19,janet,janet,my age?,19,0

@@ -36,6 +36,8 @@ public class MenuController {
         SceneController.switchToAdminManageAccount(event);
     }
 
-    public void adminCSV(ActionEvent event) {
+    public void adminCSV(ActionEvent event) throws IOException {
+        SceneController = new SceneController();
+        SceneController.switchToAdminCsv(event);
     }
 }
