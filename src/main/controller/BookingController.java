@@ -25,7 +25,6 @@ public class BookingController {
     private DatePicker date;
     @FXML
     private Text mainTitle, BookingStatus, confirmed;
-
     @FXML
     private Button tab1,tab2,tab3,tab4,tab5,tab6,tab7,tab8,tab9;
 
@@ -46,12 +45,12 @@ public class BookingController {
     @FXML
     private Text usernameTarget;
     //shared variables across all pages
+
     public SceneController SceneController;
 
     public BookingModel bookingModel = new BookingModel();
 
     private SessionController sessionController = Main.getSessionController();
-
 
     //our methods
     //initilize our bookings on the Manage Booking Page
@@ -114,8 +113,11 @@ public class BookingController {
         ArrayList<Integer> tablesBooked= new ArrayList<Integer>();
         tablesBooked = bookingModel.getBookedTables(javaDate);
         ArrayList<Button> buttons = getButtons();
-        for (int i=0; i < buttons.size(); i++)
+        for (int i=0; i < buttons.size(); i++) {
             buttons.get(i).setTextFill(Color.BLACK);
+            int number= i+1;
+            buttons.get(i).setText("Table "+ number);
+        }
         for (int i=0; i < tablesBooked.size(); i++)
             buttons.get(tablesBooked.get(i)-1).setTextFill(Color.RED);
         showCovidTables(javaDate);
@@ -260,11 +262,9 @@ public class BookingController {
     public void adminEditBooking(ActionEvent event) throws IOException {
         sessionController.setTableEdit(tableNumber);
         sessionController.setDateEdit(javaDate.toString());
-
         sessionController.setAdminEditing(true);
         SceneController = new SceneController();
         SceneController.switchToAdminManageBookingPage((event));
-
     }
     public boolean confirmBooking() {
         String user = usernameTarget.getText();

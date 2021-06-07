@@ -36,11 +36,28 @@ public class RegisterModel {
     }
 
     public int idCount() throws SQLException {
-        Statement s = connection.createStatement();
-        ResultSet r = s.executeQuery("SELECT COUNT(*) AS rowcount FROM employee");
-        r.next();
-        int count = r.getInt("rowcount");
-        r.close();
+        int count =0;
+        connection = SQLConnection.connect();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        String query = "select * from Employee";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+            while( resultSet.next()) {
+                count = resultSet.getInt("id");
+            }
+        } catch (Exception e) {
+
+            System.out.println(e);
+
+        } finally {
+            preparedStatement.close();
+            resultSet.close();
+            connection.close();
+        }
+        System.out.println(count);
         return count;
     }
 

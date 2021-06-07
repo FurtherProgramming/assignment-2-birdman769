@@ -117,4 +117,50 @@ public class UserModel {
         }
         return true;
     }
+
+    public boolean userExists(String user) throws SQLException {
+        connection = SQLConnection.connect();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet=null;
+        String query = "select * from Employee where username=?";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, String.valueOf(user));
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        catch (Exception e)
+        {
+            return false;
+        }finally {
+            preparedStatement.close();
+            resultSet.close();
+        }
+    }
+
+    public boolean deleteUser(String user) throws SQLException {
+        boolean userExists = userExists(user);
+        if(!userExists)
+            return false;
+        String sql = "DELETE FROM Employee WHERE username = ? ";
+        connection = SQLConnection.connect();
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setString(1, String.valueOf(user));
+            // execute the delete statement
+            pstmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+
+    }
 }

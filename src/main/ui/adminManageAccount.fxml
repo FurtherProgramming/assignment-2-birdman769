@@ -74,11 +74,6 @@
                      </font>
                   </Button>
                   <TextField fx:id="age" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="230.0" />
-                  <Button defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toggleAdmin" prefHeight="74.0" prefWidth="227.0" text="toggle admin" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Button>
                </children>
             </GridPane>
             <GridPane prefHeight="260.0" prefWidth="439.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -96,6 +91,16 @@
                   <TextField fx:id="firstName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="230.0" GridPane.rowIndex="1" />
                   <TextField fx:id="lastName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="230.0" GridPane.rowIndex="2" />
                   <Button defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchUser" prefHeight="39.0" prefWidth="228.0" text="Search" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteUser" prefHeight="39.0" prefWidth="228.0" text="Delete User" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toggleAdmin" prefHeight="39.0" prefWidth="227.0" text="Toggle Admin" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -154,7 +159,7 @@
             </GridPane>
          </children>
       </GridPane>
-      <Label fx:id="updateStatus" prefHeight="27.0" prefWidth="238.0" text="">
+      <Label fx:id="updateStatus" prefHeight="44.0" prefWidth="276.0" text="">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

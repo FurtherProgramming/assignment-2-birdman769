@@ -1,10 +1,10 @@
 package main.controller;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import main.Main;
+import main.model.BookingModel;
 import main.model.UserModel;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -18,9 +18,9 @@ public class UserController {
     private Label updateStatus;
 
     UserModel userModel = new UserModel();
+    BookingModel bookingModel = new BookingModel();
     SessionController sessionController = Main.getSessionController();
     Map<String, String> userDetails = new HashMap<>();
-
 
     //our methods
     //initilize our bookings on the Manage Booking Page
@@ -32,8 +32,7 @@ public class UserController {
             age.setText(userDetails.get("age"));
         }
     }
-
-    public void submitDetails(ActionEvent event) {
+    public void submitDetails() {
         boolean success;
         success = userModel.updateUserDetails(sessionController.getUsername(),firstName.getText(), lastName.getText(), Integer.parseInt(age.getText()));
         if(success == true)
@@ -49,18 +48,15 @@ public class UserController {
         else
             updateStatus.setText("update failed!");
     }
-
-    public void toggleAdmin(ActionEvent event) throws SQLException {
+    public void toggleAdmin() throws SQLException {
         userModel.toggleAdmin(account.getText());
         boolean isAdmin = userModel.isUserAdmin(account.getText());
-
         if(isAdmin)
             updateStatus.setText("user is now an admin!");
         else
             updateStatus.setText("user is no longer an admin!");
     }
-
-    public void searchUser(ActionEvent event) throws SQLException {
+    public void searchUser() throws SQLException {
         userDetails=userModel.getUserDetails(account.getText());
         firstName.setText(userDetails.get("firstName"));
         lastName.setText(userDetails.get("lastName"));
@@ -77,4 +73,12 @@ public class UserController {
     }
 
 
+    public void deleteUser(ActionEvent event) throws SQLException {
+        boolean deleted= userModel.deleteUser(account.getText());
+        System.out.println(deleted);
+        if(deleted) {
+            updateStatus.setText("user and their bookings deleted!");
+            bookingModel.deleteAllBookings(account.getText());
+        }
+    }
 }

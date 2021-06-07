@@ -473,6 +473,20 @@ public class BookingModel {
         return false;
 
     }
+
+    public void deleteAllBookings(String user) {
+
+        String sql = "DELETE FROM Bookings WHERE username = ? ";
+        connection = SQLConnection.connect();
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setString(1, String.valueOf(user));
+            // execute the delete statement
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
 
 
