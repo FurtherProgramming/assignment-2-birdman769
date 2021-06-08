@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.Pair;
 import main.Main;
-import main.model.BookingModel;
+import test.model.BookingModel;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;

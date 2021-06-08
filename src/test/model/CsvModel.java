@@ -1,4 +1,4 @@
-package main.model;
+package test.model;
 
 import javafx.util.Pair;
 import main.SQLConnection;

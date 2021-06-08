@@ -1,4 +1,4 @@
-package main.model;
+package test.model;
 
 import javafx.embed.swing.JFXPanel;
 import org.junit.jupiter.api.Test;

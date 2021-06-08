@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import main.model.RegisterModel;
+import test.model.RegisterModel;
 
 import java.io.IOException;
 import java.sql.SQLException;

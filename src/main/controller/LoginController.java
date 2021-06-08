@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 import main.Main;
-import main.model.LoginModel;
+import test.model.LoginModel;
 
 import java.io.IOException;
 import java.net.URL;

@@ -1,4 +1,4 @@
-package main.model;
+package test.model;
 
 import org.junit.jupiter.api.Test;
 
