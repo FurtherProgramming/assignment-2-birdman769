@@ -115,6 +115,8 @@ both export into the main project directroy under "Booking-export.csv" or "Emplo
 
 -sometimes the ADMIN- user manager page displays the admins details upon load. I have not figured out why it does this. Usually does not occur.
 
+-Console outputs an integer during testing. Doesnt affect testing but unable to locate the source of it. Always an interger of 7 to date. 
+
 
 
 
