@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class UserModel {
 
-    Connection connection;
+    private Connection connection;
 
     public Map<String,String> getUserDetails(String user) throws SQLException {
         Map<String, String> userDetails = new HashMap<>();

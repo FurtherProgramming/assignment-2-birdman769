@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class BookingModel {
 
 
-    Connection connection;
+    private Connection connection;
 
     public BookingModel() {
 

@@ -12,18 +12,18 @@ import java.util.Map;
 
 public class RegisterController {
 
-    public SceneController SceneController;
-    public RegisterModel registerModel = new RegisterModel();
+    private SceneController SceneController;
+    private RegisterModel registerModel = new RegisterModel();
     @FXML
     private TextField usernameRegister, firstNameRegister, lastNameRegister, ageRegister, passwordRegister,
             questionRegister, answerRegister, resetUserInput;
     @FXML
     private Text registerError, resetMode;
     //for password reset
-    String usernameReset = null;
-    boolean resetPasswordMode= false;
-    boolean validPass = false;
-    Map<String, String> question= null;
+    private String usernameReset = null;
+    private boolean resetPasswordMode= false;
+    private boolean validPass = false;
+    private Map<String, String> question= null;
 
 
 

@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class RegisterModel {
 
-    Connection connection;
+    private Connection connection;
 
     public RegisterModel() {
 

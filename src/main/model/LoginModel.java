@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class LoginModel {
 
-    Connection connection;
+    private Connection connection;
 
     private boolean isAdmin;
 

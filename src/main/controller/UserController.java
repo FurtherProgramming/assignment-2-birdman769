@@ -17,10 +17,10 @@ public class UserController {
     @FXML
     private Label updateStatus;
 
-    UserModel userModel = new UserModel();
-    BookingModel bookingModel = new BookingModel();
-    SessionController sessionController = Main.getSessionController();
-    Map<String, String> userDetails = new HashMap<>();
+    private UserModel userModel = new UserModel();
+    private BookingModel bookingModel = new BookingModel();
+    private SessionController sessionController = Main.getSessionController();
+    private Map<String, String> userDetails = new HashMap<>();
 
     //our methods
     //initilize our bookings on the Manage Booking Page

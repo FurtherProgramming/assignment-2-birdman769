@@ -13,7 +13,7 @@ import java.time.LocalDate;
 
 public class CsvController {
 
-    public CsvModel csvModel = new CsvModel();
+    private CsvModel csvModel = new CsvModel();
 
     private LocalDate date = null;
     @FXML
@@ -29,8 +29,6 @@ public class CsvController {
         date= javaDate.getValue();
         System.out.println(date);
     }
-
-
     public void generateBookingCsv(ActionEvent event) {
         if(date!= null){
             csvModel.generateCsvBooking(date);
@@ -38,9 +36,7 @@ public class CsvController {
         }else{
             status.setText("please choose a date");
         }
-
     }
-
     public void adminBack(ActionEvent event) throws IOException {
         SceneController sceneController = new SceneController();
         sceneController.switchToAdminLandingPage(event);

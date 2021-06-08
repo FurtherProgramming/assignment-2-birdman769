@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import java.io.IOException;
 
 public class MenuController {
-    public SceneController SceneController;
+    private SceneController SceneController;
 
     public void Logout(ActionEvent event) throws IOException {
         SceneController = new SceneController();
