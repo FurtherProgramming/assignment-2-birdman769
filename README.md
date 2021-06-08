@@ -119,5 +119,34 @@ both export into the main project directroy under "Booking-export.csv" or "Emplo
 
 
 
+## ONE PAGE DOCUMENT-CHANGES/WHAT I LEARNT:
+## design changes:
+
+
+I decided to make the reset password page one page that updates after inputting username, rather than transition from between two scenes(see employee workflow wireframe)
+This was so I could use one FXML file as the functionality was relatively simple. 
+
+I chose to make the colour of the Text on the tables indicate the status, rather than changing the colour of the tables themselves. I felt the text was easy enough
+to read, and changing the colours of the tables took away from the minimalistic design I was looking for. Changing the colours of the tables often resulted in hard looking
+booking screens. 
+
+I chose to integrate the whitelist and booking manager functionality seen on the admin landing page (see admin workflow wireframe). This was because I could just place a whitelist
+button on the booking page without cluttering the manage bookings page. This also meant an admin could perform all booking functionality under one page. 
+
+I also created a csv page, instead of just having the button generate a csv on the main page as it looked messy having the date selector on the admin landing page. 
+
+
+
+## what I learnt:
+
+I learnt how to implement MVC using a java project inside intelliJ. This was also my first project written with JAVAFX so I learnt how to use JavaFX.
+
+I found it challenging to create a GUI, and learnt that in future projects that require a GUI I will need to allocate more time to develop the GUI. 
+
+I learnt how to manage a larger project. Most my previous assignments usually only contained a few custom files. 
+
+I also learnt to compartmentalise my JUNIT tests. Previously my tests were written quite long(30+ lines of code). where as I learnt to make each test very
+small and specific. 
+
 
 
