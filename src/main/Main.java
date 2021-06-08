@@ -8,8 +8,8 @@ import javafx.stage.Stage;
 import main.controller.SessionController;
 
 public class Main extends Application {
-    //functions similar to a global databundle. This global userController can be passed between scenes/controllers after the user has logged in.
-    //username is set in the controller during login, this can be accessed by a instantiating a local userController when information on user
+    //sessionController functions similar to a session variable. This global userController can be passed between scenes/controllers after the user has logged in.
+    //username is set in the controller during login, this can be accessed by a instantiating a local userController initilized to the main userController when information on user
     //is needed
     public static SessionController sessionController = new SessionController();
     public static SessionController getSessionController(){
@@ -18,9 +18,10 @@ public class Main extends Application {
     public static void updateUserController(SessionController updated){
         sessionController = updated;
     }
+
+    //run program
     @Override
     public void start(Stage primaryStage) throws Exception{
-
 
         Parent root = FXMLLoader.load(getClass().getResource("ui/login.fxml"));
         Scene scene = new Scene(root);

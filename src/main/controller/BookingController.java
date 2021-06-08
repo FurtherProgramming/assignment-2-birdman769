@@ -25,6 +25,7 @@ public class BookingController {
     private DatePicker date;
     @FXML
     private Text mainTitle, BookingStatus, confirmed;
+    //variables for our tables
     @FXML
     private Button tab1,tab2,tab3,tab4,tab5,tab6,tab7,tab8,tab9;
 
@@ -65,7 +66,7 @@ public class BookingController {
             bookingTableNumber.setText(String.valueOf(sessionController.getTableEdit()));
         }
     }
-    //user booking page methods
+    //user booking page methods- cycle through user bookings
     public void getNextBooking() throws SQLException {
         int totalBookings= bookingModel.getUserTotalBookings(sessionController.getUsername());
         if(bookingTarget >= totalBookings+2)
@@ -82,6 +83,7 @@ public class BookingController {
             confirmed.setText("unconfirmed");
 
     }
+    //confirms booking has been confirmed by an admin
     public boolean isBookingConfirmed(int table, String date) throws SQLException {
         boolean isConfirmed;
         isConfirmed= bookingModel.isBookingConfirmed(table, date);
@@ -95,19 +97,22 @@ public class BookingController {
     }
 
 
-
+    //called when user chooses a date in the date picker- sets date within class for other methods
     public void setDate(ActionEvent event) throws IOException, SQLException {
         javaDate= date.getValue();
         mainTitle.setText("Pick A Table: "+ javaDate);
         this.showBookedTables(javaDate);
 
     }
+    //returns array of the table buttons for when making changes to the button
     public <Button> ArrayList<javafx.scene.control.Button> getButtons(){
         ArrayList<javafx.scene.control.Button> buttons = new ArrayList<javafx.scene.control.Button>();
         List<javafx.scene.control.Button> buttonsList = Arrays.asList(tab1,tab2,tab3,tab4,tab5,tab6,tab7,tab8,tab9);
         buttons.addAll(buttonsList);
         return buttons;
     }
+
+    //shows booked tables- then calls show covid tables(as covid lock overriddes a booking)
 
     private void showBookedTables(LocalDate javaDate) throws SQLException {
         ArrayList<Integer> tablesBooked;
@@ -136,7 +141,7 @@ public class BookingController {
         HashMap<String, Integer> whitelist;
         whitelist=bookingModel.getWhiteList(javaDate);
         for (String i : whitelist.keySet()) {
-                buttons.get(whitelist.get(i)).setText(i);
+                buttons.get(whitelist.get(i)-1).setText(i);
         }
     }
     public boolean checkIfSatYesterday() throws SQLException {
