@@ -81,6 +81,10 @@ public class BookingController {
             confirmed.setText("confirmed");
         else
             confirmed.setText("unconfirmed");
+        boolean covidLock = bookingModel.isDateCovidLocked(LocalDate.parse(pair.getValue()),pair.getKey());
+        if(covidLock)
+            confirmed.setText("COVID LOCKED!");
+
 
     }
     //confirms booking has been confirmed by an admin
